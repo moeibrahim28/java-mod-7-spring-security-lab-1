@@ -8,7 +8,7 @@ class BitcoinServiceIntegrationTest {
 
     @Test
     void shouldReturnPrice() {
-        BitCoinService bitCoinService = new BitCoinService();
+        CryptoService bitCoinService = new CryptoService();
         String currentPrice = bitCoinService.getBitcoinPrice();
         assertThat(currentPrice).isNotNull();
 

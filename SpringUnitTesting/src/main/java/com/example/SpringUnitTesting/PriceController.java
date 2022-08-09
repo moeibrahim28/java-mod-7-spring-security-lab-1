@@ -1,22 +1,23 @@
 package com.example.SpringUnitTesting;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PriceController {
 
-    private BitCoinService bitCoinService;
+    private CryptoService cryptoService;
 
-    public PriceController(BitCoinService bitCoinService) {
-        this.bitCoinService = bitCoinService;
+    public PriceController(CryptoService cryptoService) {
+        this.cryptoService = cryptoService;
     }
 
-    @GetMapping("/bitcoin")
-    public String price() {
+    @GetMapping("/crypto/{crypto}")
+    public String price(@PathVariable String crypto) {
         return String.format("<h1>Hello User</h1>" +
-                "Price of Bitcoin currently: " + bitCoinService.getBitcoinPrice());
+                "Price of "+ crypto+ " is currently: " + cryptoService.getCryptoPrice(crypto));
 
     }
 

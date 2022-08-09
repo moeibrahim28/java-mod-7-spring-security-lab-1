@@ -10,7 +10,7 @@ class PriceControllerUnitTest {
 
     @Test
     void shouldReturnGreeting() {
-        BitCoinService bitCoinService = Mockito.mock(BitCoinService.class);
+        CryptoService bitCoinService = Mockito.mock(CryptoService.class);
         double bitcoinPrice = 1000.05;
         PriceController priceController = new PriceController(bitCoinService);
         when(bitCoinService.getBitcoinPrice()).thenReturn(String.valueOf(bitcoinPrice));

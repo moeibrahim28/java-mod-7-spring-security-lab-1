@@ -2,17 +2,14 @@ package com.example.SpringUnitTesting;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class BitCoinService {
+public class CryptoService {
 
-    public String getBitcoinPrice() {
-        String apiURL = "https://api.coincap.io/v2/assets/bitcoin";
+    public String getCryptoPrice(String name) {
+        String apiURL = "https://api.coincap.io/v2/assets/" + name;
         RestTemplate restTemplate = new RestTemplate();
         Data result = restTemplate.getForObject(apiURL, Data.class);
         double price = Double.parseDouble(result.getData().getPriceUsd());
@@ -22,7 +19,7 @@ public class BitCoinService {
 
 @Getter
 @Setter
-class BitCoin {
+class Crypto {
     private String id;
     private String symbol;
     private String priceUsd;
@@ -31,5 +28,5 @@ class BitCoin {
 @Getter
 @Setter
 class Data{
-    private BitCoin data;
+    private Crypto data;
 }

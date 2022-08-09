@@ -21,7 +21,7 @@ class PriceControllerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    private BitCoinService bitCoinService;
+    private CryptoService bitCoinService;
 
     @WithMockUser(username = "fakeuser", authorities = "admin")
     @Test
